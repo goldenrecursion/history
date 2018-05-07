@@ -34,7 +34,7 @@ export const createLocation = (path, state, key, currentLocation) => {
   }
 
   try {
-    location.pathname = decodeURI(location.pathname)
+    location.pathname = location.pathname //decodeURI(location.pathname)
   } catch (e) {
     if (e instanceof URIError) {
       throw new URIError(
