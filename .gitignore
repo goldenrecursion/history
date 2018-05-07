@@ -1,6 +1,6 @@
-es
+#es
 node_modules
-umd
+#umd
 package-lock.json
 #/*.js
 !karma.conf.js
