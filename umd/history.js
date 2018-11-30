@@ -435,7 +435,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var createBrowserHistory = function createBrowserHistory() {
 	  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-	  console.log('CREATE BROWSER HISTORY');
 	  !_DOMUtils.canUseDOM ?  false ? (0, _invariant2.default)(false, 'Browser history needs a DOM') : (0, _invariant2.default)(false) : void 0;
 
 	  var globalHistory = window.history;
