@@ -46,6 +46,7 @@ var getHistoryState = function getHistoryState() {
 var createBrowserHistory = function createBrowserHistory() {
   var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
+  console.log('CREATE BROWSER HISTORY');
   (0, _invariant2.default)(_DOMUtils.canUseDOM, 'Browser history needs a DOM');
 
   var globalHistory = window.history;
