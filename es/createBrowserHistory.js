@@ -29,6 +29,7 @@ var getHistoryState = function getHistoryState() {
 var createBrowserHistory = function createBrowserHistory() {
   var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
+  console.log('CREATE BROWSER HISTORY');
   invariant(canUseDOM, 'Browser history needs a DOM');
 
   var globalHistory = window.history;
@@ -36,7 +37,9 @@ var createBrowserHistory = function createBrowserHistory() {
   var needsHashChangeListener = !supportsPopStateOnHashChange();
 
   var _props$forceRefresh = props.forceRefresh,
-      forceRefresh = _props$forceRefresh === undefined ? false : _props$forceRefresh,
+      forceRefresh = _props$forceRefresh === undefined ? function () {
+    return false;
+  } : _props$forceRefresh,
       _props$getUserConfirm = props.getUserConfirmation,
       getUserConfirmation = _props$getUserConfirm === undefined ? getConfirmation : _props$getUserConfirm,
       _props$keyLength = props.keyLength,
@@ -157,7 +160,7 @@ var createBrowserHistory = function createBrowserHistory() {
       if (canUseHistory) {
         globalHistory.pushState({ key: key, state: state }, null, href);
 
-        if (forceRefresh) {
+        if (forceRefresh()) {
           window.location.href = href;
         } else {
           var prevIndex = allKeys.indexOf(history.location.key);
@@ -193,7 +196,7 @@ var createBrowserHistory = function createBrowserHistory() {
       if (canUseHistory) {
         globalHistory.replaceState({ key: key, state: state }, null, href);
 
-        if (forceRefresh) {
+        if (forceRefresh()) {
           window.location.replace(href);
         } else {
           var prevIndex = allKeys.indexOf(history.location.key);

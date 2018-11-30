@@ -52,7 +52,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -107,9 +107,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.createHashHistory = _createHashHistory3.default;
 	exports.createMemoryHistory = _createMemoryHistory3.default;
 
-/***/ }),
+/***/ },
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -190,9 +190,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && (0, _valueEqual2.default)(a.state, b.state);
 	};
 
-/***/ }),
+/***/ },
 /* 2 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 
@@ -269,9 +269,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = resolvePathname;
 	module.exports = exports['default'];
 
-/***/ }),
+/***/ },
 /* 3 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 
@@ -317,9 +317,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = valueEqual;
 	module.exports = exports['default'];
 
-/***/ }),
+/***/ },
 /* 4 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 
@@ -383,9 +383,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return path;
 	};
 
-/***/ }),
+/***/ },
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -435,6 +435,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var createBrowserHistory = function createBrowserHistory() {
 	  var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
+	  console.log('CREATE BROWSER HISTORY');
 	  !_DOMUtils.canUseDOM ?  false ? (0, _invariant2.default)(false, 'Browser history needs a DOM') : (0, _invariant2.default)(false) : void 0;
 
 	  var globalHistory = window.history;
@@ -442,7 +443,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var needsHashChangeListener = !(0, _DOMUtils.supportsPopStateOnHashChange)();
 
 	  var _props$forceRefresh = props.forceRefresh,
-	      forceRefresh = _props$forceRefresh === undefined ? false : _props$forceRefresh,
+	      forceRefresh = _props$forceRefresh === undefined ? function () {
+	    return false;
+	  } : _props$forceRefresh,
 	      _props$getUserConfirm = props.getUserConfirmation,
 	      getUserConfirmation = _props$getUserConfirm === undefined ? _DOMUtils.getConfirmation : _props$getUserConfirm,
 	      _props$keyLength = props.keyLength,
@@ -563,7 +566,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (canUseHistory) {
 	        globalHistory.pushState({ key: key, state: state }, null, href);
 
-	        if (forceRefresh) {
+	        if (forceRefresh()) {
 	          window.location.href = href;
 	        } else {
 	          var prevIndex = allKeys.indexOf(history.location.key);
@@ -599,7 +602,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (canUseHistory) {
 	        globalHistory.replaceState({ key: key, state: state }, null, href);
 
-	        if (forceRefresh) {
+	        if (forceRefresh()) {
 	          window.location.replace(href);
 	        } else {
 	          var prevIndex = allKeys.indexOf(history.location.key);
@@ -695,9 +698,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = createBrowserHistory;
 
-/***/ }),
+/***/ },
 /* 6 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2014-2015, Facebook, Inc.
@@ -761,15 +764,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = warning;
 
 
-/***/ }),
+/***/ },
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Copyright (c) 2013-present, Facebook, Inc.
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
 	 *
-	 * This source code is licensed under the MIT license found in the
-	 * LICENSE file in the root directory of this source tree.
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
 	 */
 
 	'use strict';
@@ -816,9 +821,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = invariant;
 
 
-/***/ }),
+/***/ },
 /* 8 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -906,9 +911,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = createTransitionManager;
 
-/***/ }),
+/***/ },
 /* 9 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	'use strict';
 
@@ -966,9 +971,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
 	};
 
-/***/ }),
+/***/ },
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -1295,9 +1300,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = createHashHistory;
 
-/***/ }),
+/***/ },
 /* 11 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -1470,7 +1475,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = createMemoryHistory;
 
-/***/ })
+/***/ }
 /******/ ])
 });
 ;
