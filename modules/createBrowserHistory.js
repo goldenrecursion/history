@@ -47,7 +47,7 @@ const createBrowserHistory = (props = {}) => {
   const needsHashChangeListener = !supportsPopStateOnHashChange()
 
   const {
-    forceRefresh = false,
+    forceRefresh = () => false,
     getUserConfirmation = getConfirmation,
     keyLength = 6
   } = props
@@ -171,7 +171,7 @@ const createBrowserHistory = (props = {}) => {
       if (canUseHistory) {
         globalHistory.pushState({ key, state }, null, href)
 
-        if (forceRefresh) {
+        if (forceRefresh()) {
           window.location.href = href
         } else {
           const prevIndex = allKeys.indexOf(history.location.key)
@@ -213,7 +213,7 @@ const createBrowserHistory = (props = {}) => {
       if (canUseHistory) {
         globalHistory.replaceState({ key, state }, null, href)
 
-        if (forceRefresh) {
+        if (forceRefresh()) {
           window.location.replace(href)
         } else {
           const prevIndex = allKeys.indexOf(history.location.key)
