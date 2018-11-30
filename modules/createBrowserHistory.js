@@ -37,6 +37,7 @@ const getHistoryState = () => {
  * pushState, replaceState, and the popstate event.
  */
 const createBrowserHistory = (props = {}) => {
+  console.log('CREATE BROWSER HISTORY');
   invariant(
     canUseDOM,
     'Browser history needs a DOM'
